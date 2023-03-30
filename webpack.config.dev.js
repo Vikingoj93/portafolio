@@ -2,8 +2,6 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
 const DotenvPlugin = require('dotenv-webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
@@ -52,12 +50,6 @@ module.exports = {
             },
         ]
     },
-    optimization: {
-        minimizer: [
-          new CssMinimizerPlugin(),
-          new TerserPlugin()
-        ],
-      },
     plugins: [
         new HtmlWebpackPlugin({
             template: './public/index.html',
