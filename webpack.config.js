@@ -25,7 +25,6 @@ module.exports = {
             '@styles': path.resolve(__dirname, 'src/styles/')
         }
     },
-    watch: true,
     module: {
         rules: [
             {
