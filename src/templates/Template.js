@@ -3,6 +3,8 @@ import gitHub from '@images/github.png';
 import instagram from '@images/instagram.png';
 import twitter from '@images/twitter.png';
 
+document.write("hello world");
+
 async function Template() {
   const data = await getData();
   const view = `
