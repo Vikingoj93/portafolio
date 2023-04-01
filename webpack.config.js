@@ -13,8 +13,8 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
     entry: './src/index.js',
     output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename : '[name].[contenthash].js'
+      path: path.resolve(__dirname, 'dist'),
+      filename : '[contenthash].js'
     },
     resolve: {
         extensions : ['.js'],
@@ -60,10 +60,10 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: './public/index.html',
-            filename : '/index.html'
+            filename : './[contenthash].html'
         }),        
         new MiniCssExtractPlugin({
-            filename: 'assets/[name].[contenthash].css'
+            filename: 'assets/[contenthash].css'
         }),
         new CopyWebpackPlugin({
             patterns: [
