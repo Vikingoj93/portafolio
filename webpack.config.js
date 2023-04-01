@@ -13,9 +13,10 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
     entry: './src/index.js',
     output: {
+      filename : '[contenthash].js',
       path: path.resolve(__dirname, 'dist'),
-      filename : '[contenthash].js'
-    },
+      publicPath: ''
+  },
     resolve: {
         extensions : ['.js'],
         alias : {
@@ -46,7 +47,7 @@ module.exports = {
                 test: /\.png$/,
                 type: 'asset/resource',
                 generator: {
-                  filename: 'assets/images/[name].[contenthash][ext]'
+                  filename: 'assets/images/[contenthash][ext]'
                 }
             },
         ]
@@ -78,5 +79,10 @@ module.exports = {
           }),
         new DotenvPlugin(),
         new CleanWebpackPlugin({ cleanStaleWebpackAssets: false })
-    ]
+    ],
+    devServer: {
+      contentBase: path.resolve(__dirname, 'dist'),
+      open: true,
+      port: 8080
+    },
 }

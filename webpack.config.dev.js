@@ -11,8 +11,9 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
     entry: './src/index.js',
     output: {
+        filename : '[name].[contenthash].js',
         path: path.resolve(__dirname, 'dist'),
-        filename : '[name].[contenthash].js'
+        publicPath: ''
     },
     resolve: {
         extensions : ['.js'],
@@ -23,11 +24,10 @@ module.exports = {
             '@styles': path.resolve(__dirname, 'src/styles/')
         }
     },
-    watch: true,
     module: {
         rules: [
             {
-                test: /\.m?js$/,
+                test: /\.js$/,
                 exclude: /node_module/,
                 use: {
                     loader: 'babel-loader'
@@ -52,8 +52,9 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
+            inject: true,
             template: './public/index.html',
-            filename : '/[name].[contenthash].html'
+            filename : '/index.html'
         }),        
         new MiniCssExtractPlugin({
             filename: 'assets/[name].[contenthash].css'
